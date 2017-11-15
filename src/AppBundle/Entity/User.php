@@ -66,6 +66,16 @@ class User implements UserInterface, \Serializable
     private $role;
     
     /**
+     * @ORM\Column(name="is_active", type="boolean")
+     */
+    private $isActive;
+    
+    public function __construct() 
+    {
+        
+    }
+    
+    /**
      * Get id
      *
      * @return int
@@ -123,10 +133,7 @@ class User implements UserInterface, \Serializable
         return $this->password;
     }
 
-    public function getSalt()
-    {
-        return null;
-    }
+    
     
     /**
      * Set email
@@ -223,6 +230,24 @@ class User implements UserInterface, \Serializable
     {
         return $this->role;
     }
+    
+    // implemented userInterface functions
+    
+    public function getRoles()
+    {
+        return array("ROLE_USER");
+    }
+    
+    public function getSalt()
+    {
+        return null;
+    }
+    
+    public function eraseCredentials()
+    {
+        
+    }
+    
     
     
     public function serialize()
