@@ -33,21 +33,16 @@ security:
         #    cost: 12
     
     firewalls:
-        main:
-            pattern: ^/
-            http_basic: ~
-            provider: our_db_provider
-        
         # disables authentication for assets and the profiler, adapt it according to your needs
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
-
-        default:
-            anonymous: ~
-            form_login:
-                login_path: login
-                check_path: login
+        
+        main:
+            pattern: ^/
+            http_basic: ~
+            provider: our_db_provider
+            
             logout:
                 path:   /logout
                 target: /

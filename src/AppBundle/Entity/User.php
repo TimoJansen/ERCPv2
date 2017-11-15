@@ -62,6 +62,7 @@ class User implements UserInterface, \Serializable
      * @var int
      * 
      * @ORM\Column(name="role", type="integer", length=255, nullable=true)
+     * 
      */
     private $role;
     
@@ -235,6 +236,7 @@ class User implements UserInterface, \Serializable
     
     public function getRoles()
     {
+        //return array($this->getRole());
         return array("ROLE_USER");
     }
     
